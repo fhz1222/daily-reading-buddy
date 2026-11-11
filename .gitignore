@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+.venv-engine/
+models/
+artifacts/
+*.egg-info/
+config.local.json
+*.webm
+*.wav
+*.mp4
+.env

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#fff6fb" />
+  <title>彩虹朗读小屋 · 每日英语单词</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="sky-ornament cloud-one">☁</div><div class="sky-ornament cloud-two">✦</div>
+  <main class="app">
+    <header class="top-bar">
+      <div class="brand"><span class="logo" aria-hidden="true">🎀</span><span>彩虹朗读小屋<small>MY LITTLE READING CORNER</small></span></div>
+      <button id="parentToggle" class="quiet-button" type="button">⚙ 家长设置</button>
+    </header>
+    <section class="welcome">
+      <div><span class="eyebrow">A little English every day ✨</span><h1>今天也来读英语吧！</h1><p id="todayDate">每天 5 分钟，读一个词就很棒。</p></div>
+      <div class="mascot" aria-hidden="true"><span class="ear left"></span><span class="ear right"></span><span class="bunny-face"><i class="eye one"></i><i class="eye two"></i><i class="nose"></i><i class="cheek left"></i><i class="cheek right"></i></span><span class="bow">🎀</span></div>
+    </section>
+    <section class="game-panel" aria-label="今日朗读练习">
+      <div class="progress-top"><span id="countLabel">今日任务 0 / 5</span><span id="aiState" class="local-chip">🔒 本地 AI</span></div>
+      <div id="progressDots" class="progress-dots" aria-label="闯关进度"></div>
+      <div id="practiceView">
+        <div class="word-card">
+          <div class="star left" aria-hidden="true">✧</div><div class="star right" aria-hidden="true">✦</div>
+          <span id="wordPosition" class="word-index">WORD 01</span>
+          <h2 id="wordText">butterfly</h2>
+          <p id="wordMeaning">蝴蝶</p>
+          <button id="speakBtn" type="button" class="listen-button">🔊 听老师读一遍</button>
+        </div>
+        <div class="record-zone"><p id="recordHint">轮到你啦！点击麦克风，读出上面的英文。</p>
+          <button id="recordBtn" type="button" class="record-button" aria-label="开始录音"><span class="mic-icon">🎤</span><span id="recordLabel">开始朗读</span></button>
+          <p id="recordNote" class="record-note">点击开始，再点一次结束（最长 8 秒）</p>
+        </div>
+        <div id="resultBox" class="result-box hidden" role="status" aria-live="polite"></div>
+        <div class="bottom-actions"><button id="nextBtn" class="primary-button hidden" type="button">下一张单词卡 →</button><button id="retryBtn" class="secondary-button hidden" type="button">再练一遍 ↻</button></div>
+      </div>
+      <div id="finishView" class="finish-view hidden"><div class="big-trophy">🌈⭐🎁</div><h2>今天的朗读完成啦！</h2><p>每一次开口，都是进步。</p><button id="repeatBtn" class="secondary-button">从头复习一次</button></div>
+    </section>
+    <section class="tip-row"><span>🌷 可以慢一点读</span><span>💖 不怕读错</span><span>🌼 每天一点点</span></section>
+    <section id="parentPanel" class="parent-panel hidden" aria-label="家长设置">
+      <div class="section-heading"><h2>家长设置</h2><span>今日词表仅保存在这台设备的浏览器中</span></div>
+      <p>把今天课本里的单词复制进来，每行一个。可以写成 <code>butterfly | 蝴蝶</code>。也支持短句，例如 <code>Good morning | 早上好</code>。</p>
+      <label for="wordEditor">今天要练的单词 / 句子（建议 5–8 个）</label>
+      <textarea id="wordEditor" rows="7" spellcheck="false"></textarea>
+      <div class="settings-actions"><button type="button" id="saveWords" class="primary-button">保存今日单词</button><button type="button" id="resetProgress" class="secondary-button">清除今日进度</button></div>
+      <p id="editInfo" class="muted" role="status"></p>
+      <details><summary>关于 AI 识别</summary><p>本版使用本机 Whisper 小模型识别孩子读出的英文，不上传录音到第三方。识别成相同单词时会显示“听到了”；未匹配只代表“没听清”，不说明发音一定有问题。声音不会保存，识别结果只在本机显示。</p><p>首次使用时需要下载模型到电脑，之后可离线处理。只允许在这台电脑的浏览器访问。</p></details>
+      <button type="button" id="parentAdvance" class="quiet-button">如果 AI 一直没听清，家长确认后通过这一词</button>
+    </section>
+    <footer>Made for little brave voices ♡</footer>
+  </main>
+</body>
+</html>

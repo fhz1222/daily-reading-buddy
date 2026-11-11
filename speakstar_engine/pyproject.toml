@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "speakstar-engine"
+version = "0.1.0"
+description = "Offline, evidence-based phoneme assessment prototype"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.26,<3", "onnxruntime>=1.20,<2", "phonemizer>=3.3,<4", "imageio-ffmpeg>=0.6,<1", "espeakng-loader>=0.2.4,<0.3"]
+
+[project.optional-dependencies]
+export = ["torch>=2.6,<2.7", "transformers>=4.48,<4.50", "onnx>=1.17,<2"]
+test = ["torchaudio>=2.6,<2.7"]
+
+[project.scripts]
+speakstar-assess = "speakstar.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["speakstar*"]
+
+[tool.setuptools.package-data]
+speakstar = ["data/*.json"]
